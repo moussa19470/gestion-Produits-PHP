@@ -36,6 +36,50 @@ function afficheCategorieSansProduit(array $categories): void {
 }
 
 
+// Lit une chaîne saisie par l'utilisateur
+function saisieChaine(string $message): string {
+    return readline($message);
+}
+
+// Vérifie qu'un champ n'est pas vide
+function champObligatoire(string $value, string $message): bool {
+    if (empty($value)) {
+        echo $message . "\n";
+        return false;
+    }
+    return true;
+}
+
+// Recherche une catégorie par une clé donnée (code, nom, etc.)
+// Retourne l'index si trouvé, sinon false
+function rechercheCategorieParCle(array $categories, string $key, string $value): int|bool {
+    foreach ($categories as $index => $categorie) {
+        if ($categorie[$key] === $value) {
+            return $index;
+        }
+    }
+    return false;
+}
+
+// Saisie d'un champ obligatoire ET unique (vérifié via une clé de catégorie)
+function saisieChampObligatoireEtUnique(array $categories, string $smsSaisie, string $smsError, string $key): string {
+    do {
+        $value = saisieChaine($smsSaisie);
+        $valueIsValid = champObligatoire($value, $smsError);
+
+        if ($valueIsValid) {
+            $existe = rechercheCategorieParCle($categories, $key, $value);
+            $valueIsValid = ($existe === false); 
+            if (!$valueIsValid) {
+                echo "Cette valeur existe déjà, veuillez en choisir une autre.\n";
+            }
+        }
+    } while (!$valueIsValid);
+
+    return $value;
+}
+
+
 
 
 
