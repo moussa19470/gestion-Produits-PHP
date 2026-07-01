@@ -81,6 +81,25 @@ function saisieChampObligatoireEtUnique(array $categories, string $smsSaisie, st
 
 
 
+// Enregistre une nouvelle catégorie
+function enregistrerCategorie(): void {
+    global $categories;
+
+    $code = saisieChampObligatoireEtUnique($categories, "Entrez le code : ", "Champ obligatoire : ", "code");
+    $nom  = saisieChampObligatoireEtUnique($categories, "Entrez le nom : ", "Champ obligatoire : ", "nom");
+
+    $categorie = [
+        "code" => $code,
+        "nom" => $nom,
+        "produits" => []
+    ];
+
+    $categories[] = $categorie;
+}
+
+
+afficheCategorieSansProduit($categories);
+
 
 
 
