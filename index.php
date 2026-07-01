@@ -106,6 +106,130 @@
 
 
 
+          $codeIsValid = true;
+    
+   do { 
+        
+        $code = readline("saisir le code :");
+        if (empty($code)) {
+            echo "le code est obligatoire \n";
+             $codeIsValid = false;
+        }else{
+            foreach ($categories as  $categorie ) {
+               if (($categorie["code"]) === $code) {
+                $codeIsValid = false;
+                echo "le code existe deja ...\n"; 
+         }
+       }  
+}
+        
+
+
+    } while (!$codeIsValid);
+    
+     $nomIsValid = true;
+  do { 
+        
+        $nom = readline("saisir le nom : ");
+        if (empty($nom)) {
+            echo "le nom est obligatoire";
+             $nomIsValid= false;
+        }else{
+            foreach ($categories as  $categorie ) {
+               if (($categorie["nom"]) === $nom) {
+                $nomIsValid = false;
+                echo "le nom existe deja ..."; 
+         }
+       }  
+}
+    } while (!$nomIsValid);
+
+     $produits = [];
+     do {
+         $produit =   [
+                    "nom" => readline("saisir le nom : "),
+                    "reference" => readline("saisir la reference : "),
+                    "prix" => (int)readline("saisir le prix : "),
+                    "quantite" => (int)readline("saisir la quantité : ")
+                  ];
+          $produits[]= $produit;
+
+          $choix = strtolower(readline(" voulez vous continuer  oui/non "));
+          
+     } while ($choix === "oui");
+
+    $categorie  =   [
+            "code" => $code,
+            "nom" => $nom,
+            "produits" =>  $produits 
+         ];
+
+         $categories[] = $categorie;
+
+
+
+          $codeIsValid = true;
+    
+   do { 
+        
+        $code = readline("saisir le code :");
+        if (empty($code)) {
+            echo "le code est obligatoire \n";
+             $codeIsValid = false;
+        }else{
+            foreach ($categories as  $categorie ) {
+               if (($categorie["code"]) === $code) {
+                $codeIsValid = false;
+                echo "le code existe deja ...\n"; 
+         }
+       }  
+}
+        
+
+
+    } while (!$codeIsValid);
+    
+     $nomIsValid = true;
+  do { 
+        
+        $nom = readline("saisir le nom : ");
+        if (empty($nom)) {
+            echo "le nom est obligatoire";
+             $nomIsValid= false;
+        }else{
+            foreach ($categories as  $categorie ) {
+               if (($categorie["nom"]) === $nom) {
+                $nomIsValid = false;
+                echo "le nom existe deja ..."; 
+         }
+       }  
+}
+    } while (!$nomIsValid);
+
+     $produits = [];
+     do {
+         $produit =   [
+                    "nom" => readline("saisir le nom : "),
+                    "reference" => readline("saisir la reference : "),
+                    "prix" => (int)readline("saisir le prix : "),
+                    "quantite" => (int)readline("saisir la quantité : ")
+                  ];
+          $produits[]= $produit;
+
+          $choix = strtolower(readline(" voulez vous continuer  oui/non "));
+          
+     } while ($choix === "oui");
+
+    $categorie  =   [
+            "code" => $code,
+            "nom" => $nom,
+            "produits" =>  $produits 
+         ];
+
+         $categories[] = $categorie;
+
+
+
 
 
 
